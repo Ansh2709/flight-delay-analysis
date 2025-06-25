@@ -1,0 +1,44 @@
+{
+  "model_type": "regression",
+  "best_model": "XGBoost",
+  "best_params": {
+    "learning_rate": 0.1,
+    "max_depth": 9,
+    "n_estimators": 100,
+    "subsample": 0.8
+  },
+  "metrics": {
+    "random_forest": {
+      "cv_mae": 51.296082092038276,
+      "cv_std": 0.7073150967495769,
+      "mae": 48.156426526573895,
+      "rmse": 135.11172104081564,
+      "r2": 0.9976969651358901,
+      "mape": 3.2380363969866948,
+      "overfit_ratio": 0.9387934626307125
+    },
+    "xgboost": {
+      "cv_mae": 47.40456992215129,
+      "cv_std": 0.8544048576358027,
+      "mae": 44.859516303652924,
+      "rmse": 135.16286822794788,
+      "r2": 0.9976952211561679,
+      "mape": 3.186294413138288,
+      "overfit_ratio": 0.9463120618396517
+    },
+    "linear_regression": {
+      "cv_mae": 369.63279043255056,
+      "cv_std": 1.1263810376997825,
+      "mae": 368.50076478182524,
+      "rmse": 715.1215476324269,
+      "r2": 0.9354829964343669,
+      "mape": 73.42921131246557,
+      "overfit_ratio": 0.9969374317429993
+    }
+  },
+  "feature_count": 24,
+  "test_size": 32371,
+  "delayed_flights_only": true,
+  "outliers_removed": true,
+  "data_leakage_prevented": true
+}
