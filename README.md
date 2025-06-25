@@ -495,8 +495,8 @@ We welcome contributions from the aviation analytics community!
 *4th Year Chemical Engineering Student*
 
 📱 **Phone**: [+91-7876686919](tel:+91-7876686919)  
-📧 **Email**: [ansh.aggarwal@example.com](mailto:ansh.aggarwal@example.com)  
-💼 **LinkedIn**: [Connect with Ansh](https://linkedin.com/in/ansh-aggarwal)  
+📧 **Email**: [ansh.aggarwal@example.com](mailto:aggarwalansh360@gmail.com)  
+💼 **LinkedIn**: [Connect with Ansh](https://linkedin.com/in/anshagg)  
 🐙 **GitHub**: [@Ansh2709](https://github.com/Ansh2709)
 
 </div>
