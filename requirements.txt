@@ -1,0 +1,46 @@
+# # # Core Data Science
+# pandas
+# numpy
+# scikit-learn
+# scipy
+
+# # Visualization
+# matplotlib
+# seaborn
+# plotly
+
+# # Machine Learning
+# xgboost
+# lightgbm
+# catboost
+# scikit-learn
+
+# # Model Interpretation
+# shap
+
+
+
+# # Utilities
+# joblib
+# PyYAML
+# tqdm
+# python-dateutil
+
+# # Jupyter
+# jupyter
+# ipykernel
+# ipywidgets
+
+# # Excel/CSV Support
+# openpyxl
+# xlsxwriter
+
+# # Testing
+# pytest
+# pytest-cov
+pandas
+numpy
+matplotlib
+seaborn
+scikit-learn
+pyyaml

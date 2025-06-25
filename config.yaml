@@ -1,0 +1,135 @@
+# config.yaml
+
+# Data Paths
+data:
+  raw: data/raw/flight_data.csv
+  cleaned: data/processed/cleaned_flight_data.csv
+  classification: data/processed/classification_data.csv
+  regression: data/processed/regression_data.csv
+  model_ready: data/processed/model_ready_data.csv
+  feature_info: data/processed/feature_info.json
+
+# Model Paths
+models:
+  classification_model: data/models/trained_models/classification_model.pkl
+  regression_model: data/models/trained_models/regression_model.pkl
+  classification_explainer: data/models/trained_models/classification_explainer.pkl
+  regression_explainer: data/models/trained_models/regression_explainer.pkl
+  classification_results: data/models/trained_models/classification_results.json
+  regression_results: data/models/trained_models/regression_results.json
+
+# Visualization Paths
+visualizations:
+  delay_distributions: visualizations/delay_distributions/
+  temporal_patterns: visualizations/temporal_patterns/
+  root_cause_analysis: visualizations/root_cause_analysis/
+  model_results: visualizations/model_results/
+
+# Target Definitions
+targets:
+  classification: is_delayed           # 1 if arr_delay >= 15, else 0
+  regression: delay_duration           # max(0, arr_delay)
+
+# Feature Lists (update as needed based on EDA/feature engineering)
+features:
+  categorical:
+    - carrier
+    - carrier_name
+    - airport
+    - airport_name
+    - month
+  numerical:
+    - arr_flights
+    - arr_del15
+    - carrier_ct
+    - weather_ct
+    - nas_ct
+    - security_ct
+    - late_aircraft_ct
+    - arr_cancelled
+    - arr_diverted
+    - arr_delay
+    - carrier_delay
+    - weather_delay
+    - nas_delay
+    - security_delay
+    - late_aircraft_delay
+  classification:
+    - arr_flights
+    - arr_del15
+    - carrier_ct
+    - weather_ct
+    - nas_ct
+    - security_ct
+    - late_aircraft_ct
+    - arr_cancelled
+    - arr_diverted
+    - carrier
+    - airport
+    - month
+  regression:
+    - arr_flights
+    - arr_del15
+    - carrier_ct
+    - weather_ct
+    - nas_ct
+    - security_ct
+    - late_aircraft_ct
+    - arr_cancelled
+    - arr_diverted
+    - carrier
+    - airport
+    - month
+    - carrier_delay
+    - weather_delay
+    - nas_delay
+    - security_delay
+    - late_aircraft_delay
+
+# Modeling Parameters
+modeling:
+  random_seed: 42
+  test_size: 0.2
+  classification_model:
+    type: RandomForestClassifier
+    params:
+      n_estimators: 100
+      max_depth: 10
+      min_samples_split: 10
+      min_samples_leaf: 5
+      random_state: 42
+  regression_model:
+    type: RandomForestRegressor
+    params:
+      n_estimators: 100
+      max_depth: 15
+      min_samples_split: 10
+      min_samples_leaf: 5
+      random_state: 42
+
+# OAI (Operational Adjustability Index) weights
+oai_weights:
+  controllable_features:
+    - carrier_ct
+    - late_aircraft_ct
+    - carrier_delay
+    - late_aircraft_delay
+    - arr_cancelled
+  uncontrollable_features:
+    - weather_ct
+    - nas_ct
+    - security_ct
+    - weather_delay
+    - nas_delay
+    - security_delay
+  controllable_weight: 2.0
+  uncontrollable_weight: 1.0
+
+# SHAP Analysis
+shap:
+  sample_size: 1000  # Number of samples for SHAP summary plots
+
+# Miscellaneous
+misc:
+  report_dir: reports/
+  presentation: presentation/Flight_Delay_Analysis_Presentation.pptx
