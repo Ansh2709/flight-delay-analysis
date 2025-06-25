@@ -1,0 +1,433 @@
+=== LOADING DATA ===
+Initial DataFrame shape: (179339, 21)
+Initial columns: ['year', 'month', 'carrier', 'carrier_name', 'airport', 'airport_name', 'arr_flights', 'arr_del15', 'carrier_ct', 'weather_ct', 'nas_ct', 'security_ct', 'late_aircraft_ct', 'arr_cancelled', 'arr_diverted', 'arr_delay', 'carrier_delay', 'weather_delay', 'nas_delay', 'security_delay', 'late_aircraft_delay']
+
+=== FIRST FEW ROWS (RAW) ===
+   year  month carrier       carrier_name airport  \
+0  2023     12      9E  Endeavor Air Inc.     ABE   
+1  2023     12      9E  Endeavor Air Inc.     AEX   
+2  2023     12      9E  Endeavor Air Inc.     AGS   
+3  2023     12      9E  Endeavor Air Inc.     ALB   
+4  2023     12      9E  Endeavor Air Inc.     ATL   
+
+                                        airport_name  arr_flights  arr_del15  \
+0  Allentown/Bethlehem/Easton, PA: Lehigh Valley ...         72.0        5.0   
+1           Alexandria, LA: Alexandria International         62.0        7.0   
+2        Augusta, GA: Augusta Regional at Bush Field         95.0       10.0   
+3                   Albany, NY: Albany International         23.0        2.0   
+4  Atlanta, GA: Hartsfield-Jackson Atlanta Intern...       2111.0      256.0   
+
+   carrier_ct  weather_ct  ...  security_ct  late_aircraft_ct  arr_cancelled  \
+0        2.46        1.00  ...          0.0              0.81            0.0   
+1        4.25        0.00  ...          0.0              1.75            0.0   
+2        5.94        0.00  ...          0.0              3.00            0.0   
+3        0.56        0.00  ...          0.0              1.44            1.0   
+4       76.88        8.75  ...          0.0            117.94            1.0   
+
+   arr_diverted  arr_delay  carrier_delay  weather_delay  nas_delay  \
+0           0.0      672.0           61.0          574.0       20.0   
+1           0.0      348.0          252.0            0.0       33.0   
+2           0.0      859.0          536.0            0.0       47.0   
+3           0.0       75.0            9.0            0.0        0.0   
+4           0.0    21424.0         8906.0          732.0     1487.0   
+
+   security_delay  late_aircraft_delay  
+0             0.0                 17.0  
+1             0.0                 63.0  
+2             0.0                276.0  
+3             0.0                 66.0  
+4             0.0              10299.0  
+
+[5 rows x 21 columns]
+
+=== INITIAL DATA TYPES ===
+year                     int64
+month                    int64
+carrier                 object
+carrier_name            object
+airport                 object
+airport_name            object
+arr_flights            float64
+arr_del15              float64
+carrier_ct             float64
+weather_ct             float64
+nas_ct                 float64
+security_ct            float64
+late_aircraft_ct       float64
+arr_cancelled          float64
+arr_diverted           float64
+arr_delay              float64
+carrier_delay          float64
+weather_delay          float64
+nas_delay              float64
+security_delay         float64
+late_aircraft_delay    float64
+dtype: object
+
+=== CONVERTING TO NUMERIC ===
+Converted year: int64 -> int64
+Converted month: int64 -> int64
+Converted arr_flights: float64 -> float64
+  Warning: 341 NaN values created in arr_flights
+Converted arr_del15: float64 -> float64
+  Warning: 591 NaN values created in arr_del15
+Converted carrier_ct: float64 -> float64
+  Warning: 341 NaN values created in carrier_ct
+Converted weather_ct: float64 -> float64
+  Warning: 341 NaN values created in weather_ct
+Converted nas_ct: float64 -> float64
+  Warning: 341 NaN values created in nas_ct
+Converted security_ct: float64 -> float64
+  Warning: 341 NaN values created in security_ct
+Converted late_aircraft_ct: float64 -> float64
+  Warning: 341 NaN values created in late_aircraft_ct
+Converted arr_cancelled: float64 -> float64
+  Warning: 341 NaN values created in arr_cancelled
+Converted arr_diverted: float64 -> float64
+  Warning: 341 NaN values created in arr_diverted
+Converted arr_delay: float64 -> float64
+  Warning: 341 NaN values created in arr_delay
+Converted carrier_delay: float64 -> float64
+  Warning: 341 NaN values created in carrier_delay
+Converted weather_delay: float64 -> float64
+  Warning: 341 NaN values created in weather_delay
+Converted nas_delay: float64 -> float64
+  Warning: 341 NaN values created in nas_delay
+Converted security_delay: float64 -> float64
+  Warning: 341 NaN values created in security_delay
+Converted late_aircraft_delay: float64 -> float64
+  Warning: 341 NaN values created in late_aircraft_delay
+
+=== POST-CONVERSION DATA TYPES ===
+year                     int64
+month                    int64
+carrier                 object
+carrier_name            object
+airport                 object
+airport_name            object
+arr_flights            float64
+arr_del15              float64
+carrier_ct             float64
+weather_ct             float64
+nas_ct                 float64
+security_ct            float64
+late_aircraft_ct       float64
+arr_cancelled          float64
+arr_diverted           float64
+arr_delay              float64
+carrier_delay          float64
+weather_delay          float64
+nas_delay              float64
+security_delay         float64
+late_aircraft_delay    float64
+dtype: object
+
+Numerical columns found: 17
+Columns: ['year', 'month', 'arr_flights', 'arr_del15', 'carrier_ct', 'weather_ct', 'nas_ct', 'security_ct', 'late_aircraft_ct', 'arr_cancelled', 'arr_diverted', 'arr_delay', 'carrier_delay', 'weather_delay', 'nas_delay', 'security_delay', 'late_aircraft_delay']
+
+=== BASIC STATISTICS ===
+                year          month    arr_flights      arr_del15  \
+count  179339.000000  179339.000000  178998.000000  178748.000000   
+mean     2019.480057       6.485695     327.819456      58.709720   
+std         2.410220       3.463530     930.999440     164.377793   
+min      2015.000000       1.000000       1.000000       0.000000   
+25%      2018.000000       3.000000      41.000000       6.000000   
+50%      2020.000000       6.000000      89.000000      15.000000   
+75%      2022.000000       9.000000     218.000000      40.000000   
+max      2023.000000      12.000000   21977.000000    4176.000000   
+
+          carrier_ct     weather_ct         nas_ct    security_ct  \
+count  178998.000000  178998.000000  178998.000000  178998.000000   
+mean       18.572794       2.035807      17.095097       0.145306   
+std        47.389562       6.894847      56.279491       0.702147   
+min         0.000000       0.000000       0.000000       0.000000   
+25%         1.960000       0.000000       1.000000       0.000000   
+50%         5.400000       0.220000       3.300000       0.000000   
+75%        14.700000       1.620000       9.867500       0.000000   
+max      1293.910000     266.420000    1884.420000      58.690000   
+
+       late_aircraft_ct  arr_cancelled   arr_diverted      arr_delay  \
+count     178998.000000  178998.000000  178998.000000  178998.000000   
+mean          20.778728       6.830344       0.779584    3863.342026   
+std           64.912671      41.446766       3.490493   11902.127385   
+min            0.000000       0.000000       0.000000       0.000000   
+25%            1.000000       0.000000       0.000000     288.000000   
+50%            4.290000       1.000000       0.000000     900.000000   
+75%           13.010000       3.000000       1.000000    2547.750000   
+max         2069.070000    4951.000000     160.000000  438783.000000   
+
+       carrier_delay  weather_delay      nas_delay  security_delay  \
+count  178998.000000  178998.000000  178998.000000   178998.000000   
+mean     1325.554537     209.117230     819.957843        6.839903   
+std      4067.777154     791.817062    3178.596642       40.440387   
+min         0.000000       0.000000       0.000000        0.000000   
+25%        91.000000       0.000000      28.000000        0.000000   
+50%       321.000000      12.000000     124.000000        0.000000   
+75%       986.000000     131.000000     401.000000        0.000000   
+max    196944.000000   31960.000000  112018.000000     3760.000000   
+
+       late_aircraft_delay  
+count        178998.000000  
+mean           1501.865563  
+std            4878.166897  
+min               0.000000  
+25%              54.000000  
+50%             286.000000  
+75%             964.000000  
+max          227959.000000  
+
+=== ADDITIONAL STATISTICS ===
+Missing values per column:
+arr_flights            341
+arr_del15              591
+carrier_ct             341
+weather_ct             341
+nas_ct                 341
+security_ct            341
+late_aircraft_ct       341
+arr_cancelled          341
+arr_diverted           341
+arr_delay              341
+carrier_delay          341
+weather_delay          341
+nas_delay              341
+security_delay         341
+late_aircraft_delay    341
+dtype: int64
+
+Data ranges:
+year: 2015 to 2023
+month: 1 to 12
+arr_flights: 1.0 to 21977.0
+arr_del15: 0.0 to 4176.0
+carrier_ct: 0.0 to 1293.91
+weather_ct: 0.0 to 266.42
+nas_ct: 0.0 to 1884.42
+security_ct: 0.0 to 58.69
+late_aircraft_ct: 0.0 to 2069.07
+arr_cancelled: 0.0 to 4951.0
+arr_diverted: 0.0 to 160.0
+arr_delay: 0.0 to 438783.0
+carrier_delay: 0.0 to 196944.0
+weather_delay: 0.0 to 31960.0
+nas_delay: 0.0 to 112018.0
+security_delay: 0.0 to 3760.0
+late_aircraft_delay: 0.0 to 227959.0
+
+=== CATEGORICAL COLUMNS SUMMARY ===
+carrier: 29 unique values
+  Top 5 values: ['OO', 'DL', 'MQ', 'AA', 'UA']
+carrier_name: 39 unique values
+  Top 5 values: ['SkyWest Airlines Inc.', 'Envoy Air', 'Delta Air Lines Network', 'Allegiant Air', 'American Airlines Network']
+airport: 396 unique values
+  Top 5 values: ['CLE', 'DTW', 'BNA', 'PIT', 'IND']
+airport_name: 420 unique values
+  Top 5 values: ['Cleveland, OH: Cleveland-Hopkins International', 'Detroit, MI: Detroit Metro Wayne County', 'Nashville, TN: Nashville International', 'Pittsburgh, PA: Pittsburgh International', 'Indianapolis, IN: Indianapolis International']
+
+=== FINAL DATAFRAME INFO ===
+<class 'pandas.core.frame.DataFrame'>
+RangeIndex: 179339 entries, 0 to 179338
+Data columns (total 21 columns):
+ #   Column               Non-Null Count   Dtype  
+---  ------               --------------   -----  
+ 0   year                 179339 non-null  int64  
+ 1   month                179339 non-null  int64  
+ 2   carrier              179339 non-null  object 
+ 3   carrier_name         179339 non-null  object 
+ 4   airport              179339 non-null  object 
+ 5   airport_name         179339 non-null  object 
+ 6   arr_flights          178998 non-null  float64
+ 7   arr_del15            178748 non-null  float64
+ 8   carrier_ct           178998 non-null  float64
+ 9   weather_ct           178998 non-null  float64
+ 10  nas_ct               178998 non-null  float64
+ 11  security_ct          178998 non-null  float64
+ 12  late_aircraft_ct     178998 non-null  float64
+ 13  arr_cancelled        178998 non-null  float64
+ 14  arr_diverted         178998 non-null  float64
+ 15  arr_delay            178998 non-null  float64
+ 16  carrier_delay        178998 non-null  float64
+ 17  weather_delay        178998 non-null  float64
+ 18  nas_delay            178998 non-null  float64
+ 19  security_delay       178998 non-null  float64
+ 20  late_aircraft_delay  178998 non-null  float64
+dtypes: float64(15), int64(2), object(4)
+memory usage: 28.7+ MB
+None
+
+
+
+=== BASIC DATA INFORMATION ===
+Number of rows: 179,339
+Number of columns: 21
+
+=== COLUMN NAMES ===
+['year', 'month', 'carrier', 'carrier_name', 'airport', 'airport_name', 'arr_flights', 'arr_del15', 'carrier_ct', 'weather_ct', 'nas_ct', 'security_ct', 'late_aircraft_ct', 'arr_cancelled', 'arr_diverted', 'arr_delay', 'carrier_delay', 'weather_delay', 'nas_delay', 'security_delay', 'late_aircraft_delay']
+
+
+
+=== DATA TYPES AND INFO ===
+<class 'pandas.core.frame.DataFrame'>
+RangeIndex: 179339 entries, 0 to 179338
+Data columns (total 21 columns):
+ #   Column               Non-Null Count   Dtype  
+---  ------               --------------   -----  
+ 0   year                 179339 non-null  int64  
+ 1   month                179339 non-null  int64  
+ 2   carrier              179339 non-null  object 
+ 3   carrier_name         179339 non-null  object 
+ 4   airport              179339 non-null  object 
+ 5   airport_name         179339 non-null  object 
+ 6   arr_flights          178998 non-null  float64
+ 7   arr_del15            178748 non-null  float64
+ 8   carrier_ct           178998 non-null  float64
+ 9   weather_ct           178998 non-null  float64
+ 10  nas_ct               178998 non-null  float64
+ 11  security_ct          178998 non-null  float64
+ 12  late_aircraft_ct     178998 non-null  float64
+ 13  arr_cancelled        178998 non-null  float64
+ 14  arr_diverted         178998 non-null  float64
+ 15  arr_delay            178998 non-null  float64
+ 16  carrier_delay        178998 non-null  float64
+ 17  weather_delay        178998 non-null  float64
+ 18  nas_delay            178998 non-null  float64
+ 19  security_delay       178998 non-null  float64
+ 20  late_aircraft_delay  178998 non-null  float64
+dtypes: float64(15), int64(2), object(4)
+memory usage: 28.7+ MB
+None
+
+
+
+=== MISSING VALUES ANALYSIS ===
+                 Column  Missing_Count  Missing_Percentage
+7             arr_del15            591            0.329543
+9            weather_ct            341            0.190143
+8            carrier_ct            341            0.190143
+6           arr_flights            341            0.190143
+11          security_ct            341            0.190143
+17        weather_delay            341            0.190143
+14         arr_diverted            341            0.190143
+15            arr_delay            341            0.190143
+16        carrier_delay            341            0.190143
+19       security_delay            341            0.190143
+10               nas_ct            341            0.190143
+12     late_aircraft_ct            341            0.190143
+13        arr_cancelled            341            0.190143
+20  late_aircraft_delay            341            0.190143
+18            nas_delay            341            0.190143
+
+
+
+
+DataFrame shape: (179339, 21)
+   year  month carrier       carrier_name airport  \
+0  2023     12      9E  Endeavor Air Inc.     ABE   
+1  2023     12      9E  Endeavor Air Inc.     AEX   
+2  2023     12      9E  Endeavor Air Inc.     AGS   
+3  2023     12      9E  Endeavor Air Inc.     ALB   
+4  2023     12      9E  Endeavor Air Inc.     ATL   
+
+                                        airport_name  arr_flights  arr_del15  \
+0  Allentown/Bethlehem/Easton, PA: Lehigh Valley ...         72.0        5.0   
+1           Alexandria, LA: Alexandria International         62.0        7.0   
+2        Augusta, GA: Augusta Regional at Bush Field         95.0       10.0   
+3                   Albany, NY: Albany International         23.0        2.0   
+4  Atlanta, GA: Hartsfield-Jackson Atlanta Intern...       2111.0      256.0   
+
+   carrier_ct  weather_ct  ...  security_ct  late_aircraft_ct  arr_cancelled  \
+0        2.46        1.00  ...          0.0              0.81            0.0   
+1        4.25        0.00  ...          0.0              1.75            0.0   
+2        5.94        0.00  ...          0.0              3.00            0.0   
+3        0.56        0.00  ...          0.0              1.44            1.0   
+4       76.88        8.75  ...          0.0            117.94            1.0   
+
+   arr_diverted  arr_delay  carrier_delay  weather_delay  nas_delay  \
+0           0.0      672.0           61.0          574.0       20.0   
+1           0.0      348.0          252.0            0.0       33.0   
+2           0.0      859.0          536.0            0.0       47.0   
+3           0.0       75.0            9.0            0.0        0.0   
+4           0.0    21424.0         8906.0          732.0     1487.0   
+
+   security_delay  late_aircraft_delay  
+0             0.0                 17.0  
+1             0.0                 63.0  
+2             0.0                276.0  
+3             0.0                 66.0  
+4             0.0              10299.0  
+
+[5 rows x 21 columns]
+
+
+
+=== BASIC STATISTICS ===
+                year          month    arr_flights      arr_del15  \
+count  179339.000000  179339.000000  178998.000000  178748.000000   
+mean     2019.480057       6.485695     327.819456      58.709720   
+std         2.410220       3.463530     930.999440     164.377793   
+min      2015.000000       1.000000       1.000000       0.000000   
+25%      2018.000000       3.000000      41.000000       6.000000   
+50%      2020.000000       6.000000      89.000000      15.000000   
+75%      2022.000000       9.000000     218.000000      40.000000   
+max      2023.000000      12.000000   21977.000000    4176.000000   
+
+          carrier_ct     weather_ct         nas_ct    security_ct  \
+count  178998.000000  178998.000000  178998.000000  178998.000000   
+mean       18.572794       2.035807      17.095097       0.145306   
+std        47.389562       6.894847      56.279491       0.702147   
+min         0.000000       0.000000       0.000000       0.000000   
+25%         1.960000       0.000000       1.000000       0.000000   
+50%         5.400000       0.220000       3.300000       0.000000   
+75%        14.700000       1.620000       9.867500       0.000000   
+max      1293.910000     266.420000    1884.420000      58.690000   
+
+       late_aircraft_ct  arr_cancelled   arr_diverted      arr_delay  \
+count     178998.000000  178998.000000  178998.000000  178998.000000   
+mean          20.778728       6.830344       0.779584    3863.342026   
+std           64.912671      41.446766       3.490493   11902.127385   
+min            0.000000       0.000000       0.000000       0.000000   
+25%            1.000000       0.000000       0.000000     288.000000   
+50%            4.290000       1.000000       0.000000     900.000000   
+75%           13.010000       3.000000       1.000000    2547.750000   
+max         2069.070000    4951.000000     160.000000  438783.000000   
+
+       carrier_delay  weather_delay      nas_delay  security_delay  \
+count  178998.000000  178998.000000  178998.000000   178998.000000   
+mean     1325.554537     209.117230     819.957843        6.839903   
+std      4067.777154     791.817062    3178.596642       40.440387   
+min         0.000000       0.000000       0.000000        0.000000   
+25%        91.000000       0.000000      28.000000        0.000000   
+50%       321.000000      12.000000     124.000000        0.000000   
+75%       986.000000     131.000000     401.000000        0.000000   
+max    196944.000000   31960.000000  112018.000000     3760.000000   
+
+       late_aircraft_delay  
+count        178998.000000  
+mean           1501.865563  
+std            4878.166897  
+min               0.000000  
+25%              54.000000  
+50%             286.000000  
+75%             964.000000  
+max          227959.000000  
+
+
+=== DUPLICATE ANALYSIS ===
+Number of duplicate rows: 1
+Removing duplicates...
+Dataset shape after removing duplicates: (179338, 21)
+
+
+=== DATA QUALITY CHECKS ===
+Negative values in arr_flights: 0
+Extremely high delays (>1440 minutes - 24 hours): 67943
+Extremely low delays (<-1440 minutes): 0
+Year range: 2015 to 2023
+Month range: 1 to 12
+
+=== DATA CLEANING ===
+Filling 341 missing arr_delay values with 0
+Data cleaning completed!
+
+Cleaned data saved to '../data/processed/cleaned_flight_data.csv'
+Final dataset shape: (179338, 21)

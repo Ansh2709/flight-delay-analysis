@@ -1,0 +1,69 @@
+-----------Result Analysis----------
+
+=== COMPREHENSIVE MODEL PERFORMANCE SUMMARY ===
+   Metric Classification Model Regression Model
+ Accuracy               0.9945              N/A
+Precision               1.0000              N/A
+   Recall               0.9942              N/A
+ F1-Score               0.9971              N/A
+  AUC-ROC               0.9983              N/A
+      MAE                  N/A        48.16 min
+     RMSE                  N/A       135.11 min
+       R²                  N/A           0.9977
+
+=== SHAP ANALYSIS SUMMARY ===
+✅ SHAP explainers loaded successfully
+📊 SHAP analysis provides:
+   - Feature importance rankings
+   - Individual prediction explanations
+   - Model interpretability insights
+   - Controllable vs uncontrollable factor identification
+
+📈 SHAP Insights:
+
+Classification Model:
+  Purpose: Explains why a flight is predicted to be delayed
+  Key Features: carrier_ct, late_aircraft_ct, total_delay_incidents
+  Actionable: Focus on carrier operations and aircraft turnaround
+
+Regression Model:
+  Purpose: Explains predicted delay duration
+  Key Features: carrier_delay, late_aircraft_delay, total_delay_minutes
+  Actionable: Minimize controllable delay sources
+
+=== BUSINESS IMPACT ANALYSIS ===
+Current Performance Baseline:
+  Total Flights Analyzed: 9.43600753089413e-12
+  Current Delay Rate: 95.00%
+  Average Delay Duration: 4058.8 minutes
+
+Potential Business Impact:
+                     Scenario New Delay Rate New Avg Delay
+Conservative (5% improvement)         90.25%    3855.9 min
+   Moderate (10% improvement)         85.50%    3653.0 min
+ Aggressive (15% improvement)         80.75%    3450.0 min
+
+=== ACTIONABLE RECOMMENDATIONS ===
+
+Immediate Actions (0-3 months):
+  1. Implement model predictions in operations dashboard
+  2. Focus on controllable delays (carrier and late aircraft)
+  3. Establish alert system for high-risk delay conditions
+  4. Train operations team on model insights
+
+Short-term Improvements (3-6 months):
+  1. Optimize aircraft turnaround processes
+  2. Improve carrier scheduling algorithms
+  3. Enhance ground crew resource allocation
+  4. Develop proactive passenger communication system
+
+Long-term Strategic (6+ months):
+  1. Integrate weather forecasting with delay predictions
+  2. Implement dynamic scheduling based on predictions
+  3. Develop partnerships for shared delay mitigation
+  4. Create data-driven crew scheduling optimization
+
+🎯 PRIORITY FOCUS AREAS (Based on OAI Analysis):
+
+  1. HIGH PRIORITY: Carrier delays (controllable)
+  2. HIGH PRIORITY: Late aircraft delays

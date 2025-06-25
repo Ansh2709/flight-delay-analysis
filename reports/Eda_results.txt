@@ -1,0 +1,11 @@
+---------------------EDA--------------------------
+
+=== EDA SUMMARY STATISTICS ===
+Total records analyzed: 179,338
+Total flights: 58,678,254.0
+Total delayed flights (≥15 min): 170,374
+Delay rate: 95.00%
+Average delay (all flights): 3855.96 minutes
+Average delay (delayed flights only): 4058.84 minutes
+Most delayed airport: ORD
+Most delayed carrier: WN

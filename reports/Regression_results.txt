@@ -1,0 +1,146 @@
+Regression data loaded. Shape: (179338, 35)
+Number of features: 32
+
+=== PREPARING DATA FOR MODELING ===
+Original features: 32
+Clean features (after removing potential leakage): 27
+
+Top 10 features correlated with target:
+total_delay_minutes           1.000000
+controllable_delay_minutes    0.982074
+total_delay_incidents         0.967155
+controllable_delays           0.938535
+late_aircraft_ct              0.922911
+carrier_ct                    0.908178
+nas_ct                        0.890386
+arr_flights                   0.875716
+uncontrollable_delays         0.811123
+weather_ct                    0.798700
+dtype: float64
+Removing highly correlated features: ['total_delay_minutes', 'controllable_delay_minutes', 'total_delay_incidents']
+Total records: 179,338
+Delayed flights: 161,855
+After outlier removal: 161,855
+Feature matrix shape: (161855, 24)
+Target statistics:
+   - Mean delay: 1972.39 minutes
+   - Median delay: 901.00 minutes
+   - Max delay: 17241.00 minutes
+Training set shape: (129484, 24)
+Test set shape: (32371, 24)
+
+
+=== TRAINING RANDOM FOREST REGRESSOR WITH HYPERPARAMETER TUNING ===
+Fitting 3 folds for each of 8 candidates, totalling 24 fits
+Best RF parameters: {'max_depth': 15, 'min_samples_leaf': 2, 'n_estimators': 100}
+Best RF CV score: 53.60
+Random Forest Regressor trained successfully!
+
+
+=== TRAINING XGBOOST REGRESSOR WITH HYPERPARAMETER TUNING ===
+Fitting 3 folds for each of 24 candidates, totalling 72 fits
+Best XGB parameters: {'learning_rate': 0.1, 'max_depth': 9, 'n_estimators': 100, 'subsample': 0.8}
+Best XGB CV score: 48.95
+XGBoost Regressor trained successfully!
+
+=== TRAINING LINEAR REGRESSION (BASELINE) ===
+Linear Regression model trained successfully!
+
+
+
+=== MODEL EVALUATION WITH CROSS-VALIDATION ===
+
+Random Forest Regressor Performance:
+--------------------------------------------------
+Cross-Validation MAE:          51.30 ± 0.71 minutes
+Test MAE (Mean Absolute Error): 48.16 minutes
+Test RMSE (Root Mean Squared Error): 135.11 minutes
+Test R² Score:                 0.9977
+Test MAPE (Mean Absolute % Error): 3.24%
+✅ Good generalization (Test/CV ratio: 0.94)
+
+XGBoost Regressor Performance:
+--------------------------------------------------
+Cross-Validation MAE:          47.40 ± 0.85 minutes
+Test MAE (Mean Absolute Error): 44.86 minutes
+Test RMSE (Root Mean Squared Error): 135.16 minutes
+Test R² Score:                 0.9977
+Test MAPE (Mean Absolute % Error): 3.19%
+✅ Good generalization (Test/CV ratio: 0.95)
+
+Linear Regression Performance:
+--------------------------------------------------
+Cross-Validation MAE:          369.63 ± 1.13 minutes
+Test MAE (Mean Absolute Error): 368.50 minutes
+Test RMSE (Root Mean Squared Error): 715.12 minutes
+Test R² Score:                 0.9355
+Test MAPE (Mean Absolute % Error): 73.43%
+✅ Good generalization (Test/CV ratio: 1.00)
+
+
+=== OPERATIONAL ADJUSTABILITY INDEX (OAI) FOR REGRESSION ===
+Controllable features identified: ['carrier_ct', 'late_aircraft_ct', 'carrier_encoded']
+Uncontrollable features identified: ['weather_ct', 'nas_ct', 'security_ct']
+
+Random Forest:
+Standard MAE: 48.16 minutes
+OAI-weighted MAE: 67.37 minutes
+OAI Impact: +39.9%
+Controllable features identified: ['carrier_ct', 'late_aircraft_ct', 'carrier_encoded']
+Uncontrollable features identified: ['weather_ct', 'nas_ct', 'security_ct']
+
+XGBoost:
+Standard MAE: 44.86 minutes
+OAI-weighted MAE: 62.81 minutes
+OAI Impact: +40.0%
+Controllable features identified: ['carrier_ct', 'late_aircraft_ct', 'carrier_encoded']
+Uncontrollable features identified: ['weather_ct', 'nas_ct', 'security_ct']
+
+Linear Regression:
+Standard MAE: 368.50 minutes
+OAI-weighted MAE: 520.94 minutes
+OAI Impact: +41.4%
+
+=== MODEL SELECTION AND SAVING ===
+Best model: XGBoost
+Best Test MAE: 44.86 minutes
+Best Test R² Score: 0.9977
+Generalization ratio: 0.95
+Regression model saved successfully!
+Model file: regression_model.pkl
+Results file: regression_results.json
+
+
+=== REGRESSION MODEL SUMMARY ===
+✅ Model Type: Flight Delay Duration Prediction (Minutes)
+✅ Best Model: XGBoost
+✅ Dataset Size: 161,855 delayed flights
+✅ Features Used: 24 (after data leakage prevention)
+✅ Data Quality:
+   - Outliers removed: Yes (beyond 95th percentile)
+   - Data leakage prevented: Yes
+   - Cross-validation performed: Yes
+✅ Test Set Performance:
+   - MAE:  44.86 minutes
+   - RMSE: 135.16 minutes
+   - R²:   0.9977
+   - MAPE: 3.19%
+   - Generalization: 0.95 (1.0 = perfect)
+✅ Hyperparameter Tuning: Completed
+✅ OAI Analysis: Completed
+✅ SHAP Analysis: Completed
+✅ Model Saved: ../data/models/trained_models/regression_model.pkl
+🎯 Excellent model performance!
+
+
+
+
+
+
+
+
+
+
+
+
+

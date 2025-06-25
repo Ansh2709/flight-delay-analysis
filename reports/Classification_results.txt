@@ -1,0 +1,140 @@
+--------------------CLASSIFICATION RESULTS--------------------------------
+
+Classification data loaded. Shape: (179338, 26)
+Number of features: 24
+Warning: Potential data leakage features detected: ['late_aircraft_ct', 'total_delay_incidents', 'delay_incident_rate', 'controllable_delays', 'uncontrollable_delays']
+Features after removing potential leakage: 19
+
+=== PREPARING DATA FOR MODELING ===
+Missing values in features: 341
+Missing values in target: 0
+Feature matrix shape: (179338, 19)
+Target distribution:
+is_delayed
+1    0.950016
+0    0.049984
+Name: proportion, dtype: float64
+Warning: Imbalanced dataset detected. Minority class: 0.050
+Training set shape: (107602, 19)
+Validation set shape: (35868, 19)
+Test set shape: (35868, 19)
+
+=== TRAINING RANDOM FOREST MODEL ===
+Fitting 3 folds for each of 32 candidates, totalling 96 fits
+Best RF parameters: {'max_depth': 8, 'max_features': 'sqrt', 'min_samples_leaf': 10, 'min_samples_split': 20, 'n_estimators': 50}
+Best RF CV score: 0.9966
+Random Forest model trained successfully!
+
+=== TRAINING LOGISTIC REGRESSION MODEL ===
+Fitting 3 folds for each of 4 candidates, totalling 12 fits
+Best LR parameters: {'C': 1.0, 'penalty': 'l2', 'solver': 'liblinear'}
+Best LR CV score: 0.9485
+Logistic Regression model trained successfully!
+
+=== TRAINING XGBOOST MODEL ===
+Fitting 3 folds for each of 16 candidates, totalling 48 fits
+Best XGB parameters: {'learning_rate': 0.1, 'max_depth': 3, 'n_estimators': 50, 'subsample': 0.8}
+Best XGB CV score: 0.9961
+XGBoost model trained successfully!
+
+
+
+
+=== MODEL EVALUATION ===
+
+Random Forest Performance:
+----------------------------------------
+Accuracy:  0.9945
+Precision: 1.0000
+Recall:    0.9942
+F1-Score:  0.9971
+AUC-ROC:   0.9983
+
+Classification Report:
+              precision    recall  f1-score   support
+
+           0       0.90      1.00      0.95      1793
+           1       1.00      0.99      1.00     34075
+
+    accuracy                           0.99     35868
+   macro avg       0.95      1.00      0.97     35868
+weighted avg       1.00      0.99      0.99     35868
+
+
+Logistic Regression Performance:
+----------------------------------------
+Accuracy:  0.9157
+Precision: 1.0000
+Recall:    0.9113
+F1-Score:  0.9536
+AUC-ROC:   0.9947
+
+Classification Report:
+              precision    recall  f1-score   support
+
+           0       0.37      1.00      0.54      1793
+           1       1.00      0.91      0.95     34075
+
+    accuracy                           0.92     35868
+   macro avg       0.69      0.96      0.75     35868
+weighted avg       0.97      0.92      0.93     35868
+
+
+XGBoost Performance:
+----------------------------------------
+Accuracy:  0.9936
+Precision: 1.0000
+Recall:    0.9933
+F1-Score:  0.9966
+AUC-ROC:   0.9980
+
+Classification Report:
+              precision    recall  f1-score   support
+
+           0       0.89      1.00      0.94      1793
+           1       1.00      0.99      1.00     34075
+
+    accuracy                           0.99     35868
+   macro avg       0.94      1.00      0.97     35868
+weighted avg       0.99      0.99      0.99     35868
+
+
+=== OPERATIONAL ADJUSTABILITY INDEX (OAI) ===
+Standard AUC: 0.9983
+OAI-weighted AUC: 0.9778
+OAI focuses on controllable delays - difference: -0.0205
+
+=== MODEL SELECTION AND SAVING ===
+Best model: Random Forest
+Best F1-Score: 0.9971
+Classification model saved successfully!
+Model file: classification_model.pkl
+Results file: classification_results.json
+
+
+=== CLASSIFICATION MODEL SUMMARY ===
+✅ Model Type: Flight Delay Classification (Yes/No)
+✅ Best Model: Random Forest
+✅ Dataset Size: 179,338 records
+✅ Features Used: 19
+✅ Test Set Performance:
+   - Accuracy:  0.9945
+   - Precision: 1.0000
+   - Recall:    0.9942
+   - F1-Score:  0.9971
+   - AUC-ROC:   0.9983
+
+📊 Model Comparison:
+   Random Forest: F1=0.9971, AUC=0.9983
+   Logistic Regression: F1=0.9536, AUC=0.9947
+   XGBoost: F1=0.9966, AUC=0.9980
+✅ OAI Analysis: Completed (AUC: 0.9778)
+✅ SHAP Analysis: Completed
+✅ Model Saved: ../data/models/trained_models/classification_model.pkl
+
+💡 Recommendations:
+   - High accuracy might indicate overfitting. Consider:
+     * Reducing model complexity
+     * Adding more diverse training data
+     * Cross-validating with different time periods
+
