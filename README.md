@@ -11,7 +11,7 @@
 [![SHAP](https://img.shields.io/badge/SHAP-Explainable_AI-red.svg)](https://shap.readthedocs.io/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
-![Flight Analysis Banner](https://via.placeholder.com/800x200/1e3a8a/ffffff?text=Flight+Delay+Analysis+%E2%9C%88%EF%B8%8F)
+
 
 </div>
 
